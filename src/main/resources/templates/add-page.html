@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:insert="links/links.html"></div>
+</head>
+<body>
+    <form th:action="@{'/add-item'}" method="post">
+        <div>
+            NAME:
+        </div>
+        <div>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div>
+            DESCRIPTION:
+        </div>
+        <div>
+            <textarea class="form-control" name="description"></textarea>
+        </div>
+        <div>
+            RATING:
+        </div>
+        <div>
+            <input type="number" name="rating" class="form-control">
+        </div>
+        <div>
+            PRICE:
+        </div>
+        <div>
+            <input type="text" name="price" class="form-control">
+        </div>
+        <div>
+            <button class="btn btn-success btn-sm">ADD</button>
+        </div>
+    </form>
+</body>
+</html>

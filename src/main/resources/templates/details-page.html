@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:insert="links/links.html"></div>
+</head>
+<body>
+    <form th:action="@{'/update-item'}" method="post">
+        <input type="hidden" name="id" th:value="${item.id}">
+        <div>
+            NAME:
+        </div>
+        <div>
+            <input type="text" name="name" class="form-control" th:value="${item.name}">
+        </div>
+        <div>
+            DESCRIPTION:
+        </div>
+        <div>
+            <textarea class="form-control" name="description" th:text="${item.description}"></textarea>
+        </div>
+        <div>
+            RATING:
+        </div>
+        <div>
+            <input type="text" name="rating" class="form-control" th:value="${item.rating}">
+        </div>
+        <div>
+            PRICE:
+        </div>
+        <div>
+            <input type="text" name="price" class="form-control" th:value="${item.price}">
+        </div>
+        <div>
+            <button class="btn btn-success btn-sm">UPDATE</button>
+        </div>
+    </form>
+    <form th:action="@{'/delete-item'}" method="post">
+        <input type="hidden" name="id" th:value="${item.id}">
+           <button class="btn btn-danger btn-sm">DELETE</button>
+    </form>
+</body>
+</html>
