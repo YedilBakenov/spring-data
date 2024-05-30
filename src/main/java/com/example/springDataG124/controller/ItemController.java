@@ -51,4 +51,15 @@ public class ItemController {
         return "redirect:/";
     }
 
+    @GetMapping(value = "/details-name/{name}")
+    public String getItemByName(@PathVariable String name, Model model){
+       model.addAttribute("item", itemService.findByItemName(name));
+        return "details-page";
+    }
+
+    @GetMapping(value = "/item-search")
+    public  String findByName(@RequestParam String search, Model model){
+        model.addAttribute("items", itemService.getAllItemsByFilter(search));
+        return "main";
+    }
 }

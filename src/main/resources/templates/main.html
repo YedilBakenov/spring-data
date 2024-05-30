@@ -6,6 +6,15 @@
     <div th:insert="links/links.html"></div>
 </head>
 <body>
+    <form th:action="@{'/item-search'}" method="get">
+        <div>
+            <input type="text" class="form-control" name="search">
+        </div>
+        <div>
+            <button class="btn btn-secondary btn-sm">SEARCH</button>
+        </div>
+    </form>
+
     <table class="table table-striped table-dark">
         <thead>
             <tr>
@@ -27,6 +36,9 @@
                 <th>
                     DETAILS
                 </th>
+                <th>
+                    DETAILS 2
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +49,7 @@
             <td th:text="${it.price}"></td>
             <td th:text="${it.rating}"></td>
             <td style="width: 7%"><a th:href="@{'/details/' + ${it.id}}"  class="btn btn-secondary btn-sm">DETAILS</a></td>
+            <td style="width: 10%"><a th:href="@{'/details-name/' + ${it.name}}" class="btn btn-secondary btn-sm">DETAILS BY NAME</a> </td>
         </tr>
         </tbody>
     </table>

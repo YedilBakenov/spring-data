@@ -4,6 +4,7 @@ import com.example.springDataG124.model.Item;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public interface ItemService {
@@ -17,4 +18,8 @@ public interface ItemService {
     void updateItem(Item item);
 
     Item getById(int id);
+
+    Item findByItemName(String name);
+
+    List<Item>getAllItemsByFilter(String search);
 }

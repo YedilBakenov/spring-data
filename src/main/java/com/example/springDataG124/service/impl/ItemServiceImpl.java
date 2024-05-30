@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ItemServiceImpl  implements ItemService {
@@ -38,5 +39,15 @@ public class ItemServiceImpl  implements ItemService {
     @Override
     public Item getById(int id) {
         return itemRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Item findByItemName(String name) {
+        return itemRepository.findByName(name);
+    }
+
+    @Override
+    public List<Item> getAllItemsByFilter(String search) {
+        return itemRepository.getAllItemsByFilter(search);
     }
 }
