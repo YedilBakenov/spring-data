@@ -33,6 +33,19 @@
             <input type="text" name="price" class="form-control" th:value="${item.price}">
         </div>
         <div>
+            CITIES:
+        </div>
+        <div>
+            <select class="form-control" name="city.id">
+                <option th:each="city: ${cities}"
+                        th:value="${city.id}"
+                        th:text="${city.name}"
+                        th:selected="${city.id==item.city.id}"
+                >
+                </option>
+            </select>
+        </div>
+        <div>
             <button class="btn btn-success btn-sm">UPDATE</button>
         </div>
     </form>

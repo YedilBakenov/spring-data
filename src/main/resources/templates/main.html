@@ -34,6 +34,9 @@
                     RATING
                 </th>
                 <th>
+                    CITY
+                </th>
+                <th>
                     DETAILS
                 </th>
                 <th>
@@ -48,6 +51,7 @@
             <td th:text="${it.description}"></td>
             <td th:text="${it.price}"></td>
             <td th:text="${it.rating}"></td>
+            <td th:text="${it.city.name}"></td>
             <td style="width: 7%"><a th:href="@{'/details/' + ${it.id}}"  class="btn btn-secondary btn-sm">DETAILS</a></td>
             <td style="width: 10%"><a th:href="@{'/details-name/' + ${it.name}}" class="btn btn-secondary btn-sm">DETAILS BY NAME</a> </td>
         </tr>

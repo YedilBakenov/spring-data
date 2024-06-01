@@ -4,6 +4,7 @@ import com.example.springDataG124.model.Item;
 import com.example.springDataG124.repository.ItemRepository;
 import com.example.springDataG124.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class ItemServiceImpl  implements ItemService {
 
     @Override
     public ArrayList<Item> getAllItems() {
-        return (ArrayList<Item>)itemRepository.findAll();
+        return (ArrayList<Item>)itemRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

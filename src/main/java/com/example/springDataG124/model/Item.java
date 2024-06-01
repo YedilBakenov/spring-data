@@ -30,4 +30,8 @@ public class Item {
     @Column(name = "rating")
     private double rating;
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
 }

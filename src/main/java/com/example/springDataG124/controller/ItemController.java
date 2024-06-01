@@ -1,6 +1,7 @@
 package com.example.springDataG124.controller;
 
 import com.example.springDataG124.model.Item;
+import com.example.springDataG124.service.impl.CityServiceImpl;
 import com.example.springDataG124.service.impl.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class ItemController {
 
     @Autowired
     private ItemServiceImpl itemService;
+
+    @Autowired
+    private CityServiceImpl cityService;
 
     @GetMapping(value = "/")
     public String main(Model model){
@@ -36,6 +40,7 @@ public class ItemController {
     @GetMapping(value = "/details/{id}")
     public String getAddPage(@PathVariable int id, Model model){
         model.addAttribute("item", itemService.getById(id));
+        model.addAttribute("cities", cityService.getCities());
         return "details-page";
     }
 
@@ -54,6 +59,7 @@ public class ItemController {
     @GetMapping(value = "/details-name/{name}")
     public String getItemByName(@PathVariable String name, Model model){
        model.addAttribute("item", itemService.findByItemName(name));
+        model.addAttribute("cities", cityService.getCities());
         return "details-page";
     }
 
