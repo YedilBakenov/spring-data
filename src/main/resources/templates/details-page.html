@@ -1,57 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head >
+<head>
     <meta charset="UTF-8">
     <title>Title</title>
     <div th:insert="links/links.html"></div>
 </head>
 <body>
-    <form th:action="@{'/update-item'}" method="post">
-        <input type="hidden" name="id" th:value="${item.id}">
-        <div>
-            NAME:
-        </div>
-        <div>
-            <input type="text" name="name" class="form-control" th:value="${item.name}">
-        </div>
-        <div>
-            DESCRIPTION:
-        </div>
-        <div>
-            <textarea class="form-control" name="description" th:text="${item.description}"></textarea>
-        </div>
-        <div>
-            RATING:
-        </div>
-        <div>
-            <input type="text" name="rating" class="form-control" th:value="${item.rating}">
-        </div>
-        <div>
-            PRICE:
-        </div>
-        <div>
-            <input type="text" name="price" class="form-control" th:value="${item.price}">
-        </div>
-        <div>
-            CITIES:
-        </div>
-        <div>
-            <select class="form-control" name="city.id">
-                <option th:each="city: ${cities}"
-                        th:value="${city.id}"
-                        th:text="${city.name}"
-                        th:selected="${city.id==item.city.id}"
-                >
-                </option>
-            </select>
-        </div>
-        <div>
-            <button class="btn btn-success btn-sm">UPDATE</button>
-        </div>
-    </form>
-    <form th:action="@{'/delete-item'}" method="post">
-        <input type="hidden" name="id" th:value="${item.id}">
-           <button class="btn btn-danger btn-sm">DELETE</button>
-    </form>
+
+<div class="row mt-2">
+    <div class="col-4">
+        <table class="table table-secondary">
+            <thead th:each="store: ${stores}">
+            <form th:action="@{'/add-store'}" method="post">
+                <input type="hidden" name="item_id" th:value="${item.id}">
+                <input type="hidden" name="store_id" th:value="${store.id}">
+                <tr>
+                    <td th:text="${store.name}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${store.street}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-sm btn-success"> >>> </button>
+                    </td>
+                </tr>
+            </form>
+            </thead>
+        </table>
+    </div>
+    <div class="col-4">
+        <table class="table table-secondary">
+            <thead th:each="store: ${item.stores}">
+            <form th:action="@{'/delete-store'}" method="post">
+                <input type="hidden" name="item_id" th:value="${item.id}">
+                <input type="hidden" name="store_id" th:value="${store.id}">
+                <tr>
+                    <td th:text="${store.name}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${store.street}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-sm btn-danger"> <<< </button>
+                    </td>
+                </tr>
+            </form>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<form th:action="@{'/update-item'}" method="post" class="mt-3">
+    <input type="hidden" name="id" th:value="${item.id}">
+    <div>
+        NAME:
+    </div>
+    <div>
+        <input type="text" name="name" class="form-control" th:value="${item.name}">
+    </div>
+    <div>
+        DESCRIPTION:
+    </div>
+    <div>
+        <textarea class="form-control" name="description" th:text="${item.description}"></textarea>
+    </div>
+    <div>
+        RATING:
+    </div>
+    <div>
+        <input type="text" name="rating" class="form-control" th:value="${item.rating}">
+    </div>
+    <div>
+        PRICE:
+    </div>
+    <div>
+        <input type="text" name="price" class="form-control" th:value="${item.price}">
+    </div>
+    <div>
+        CITIES:
+    </div>
+    <div>
+        <select class="form-control" name="city.id">
+            <option th:each="city: ${cities}"
+                    th:value="${city.id}"
+                    th:text="${city.name}"
+                    th:selected="${city.id==item.city.id}"
+            >
+            </option>
+        </select>
+    </div>
+    <div>
+        <button class="btn btn-success btn-sm">UPDATE</button>
+    </div>
+</form>
+<form th:action="@{'/delete-item'}" method="post">
+    <input type="hidden" name="id" th:value="${item.id}">
+    <button class="btn btn-danger btn-sm">DELETE</button>
+</form>
 </body>
 </html>

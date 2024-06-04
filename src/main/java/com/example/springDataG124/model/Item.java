@@ -4,6 +4,9 @@ package com.example.springDataG124.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "items")
 @AllArgsConstructor
@@ -33,5 +36,8 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
+
+    @ManyToMany
+    private List<Store> stores = new ArrayList<>();
 
 }
