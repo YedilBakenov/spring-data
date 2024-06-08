@@ -1,6 +1,7 @@
 package com.example.springDataG124.controller;
 
 import com.example.springDataG124.model.Item;
+import com.example.springDataG124.service.impl.CarServiceImpl;
 import com.example.springDataG124.service.impl.CityServiceImpl;
 import com.example.springDataG124.service.impl.ItemServiceImpl;
 import com.example.springDataG124.service.impl.StoreServiceImpl;
@@ -24,9 +25,13 @@ public class ItemController {
     @Autowired
     private StoreServiceImpl storeService;
 
+    @Autowired
+    private CarServiceImpl carService;
+
     @GetMapping(value = "/")
     public String main(Model model) {
         model.addAttribute("items", itemService.getAllItems());
+        model.addAttribute("cars", carService.getAllCars());
         return "main";
     }
 
