@@ -1,11 +1,9 @@
 package com.example.springDataG124.controller;
 
 import com.example.springDataG124.model.Item;
-import com.example.springDataG124.service.impl.CarServiceImpl;
-import com.example.springDataG124.service.impl.CityServiceImpl;
-import com.example.springDataG124.service.impl.ItemServiceImpl;
-import com.example.springDataG124.service.impl.StoreServiceImpl;
+import com.example.springDataG124.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +26,14 @@ public class ItemController {
     @Autowired
     private CarServiceImpl carService;
 
+    @Autowired
+    private TeacherServiceImpl teacherService;
+
     @GetMapping(value = "/")
     public String main(Model model) {
         model.addAttribute("items", itemService.getAllItems());
         model.addAttribute("cars", carService.getAllCars());
+        model.addAttribute("teachers", teacherService.getAllTeachers());
         return "main";
     }
 
